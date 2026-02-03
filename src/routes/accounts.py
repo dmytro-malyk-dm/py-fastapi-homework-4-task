@@ -415,13 +415,14 @@ async def reset_password(
         )
 
     try:
-        user.password = reset_data.password
+        user.update_password(reset_data.password)
         await db.run_sync(lambda s: s.delete(token_record))
         await db.commit()
-
+        login_link = "http://127.0.0.1/accounts/login/"
         background_tasks.add_task(
             email_sender.send_password_reset_complete_email,
-            user.email
+            user.email,
+            login_link
         )
 
     except SQLAlchemyError as e:
