@@ -18,5 +18,6 @@ from schemas.accounts import (
     TokenRefreshResponseSchema
 )
 from schemas.profiles import (
+    ProfileCreateSchema,
     ProfileResponseSchema,
 )
