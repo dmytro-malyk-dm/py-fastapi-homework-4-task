@@ -7,7 +7,12 @@ from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import joinedload
 
-from config import get_jwt_auth_manager, get_settings, BaseAppSettings, get_accounts_email_notificator
+from config import (
+    get_settings,
+    BaseAppSettings,
+    get_accounts_email_notificator
+)
+from security.dependencies import get_jwt_auth_manager
 from database import (
     get_db,
     UserModel,
